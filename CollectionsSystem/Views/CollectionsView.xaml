@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsSystem.Views.CollectionsView"
+             xmlns:ViewModels="clr-namespace:CollectionsSystem.ViewModels"
+             Title="System zarządzania kolekcjonerstwem">
+    <ContentPage.BindingContext>
+        <ViewModels:CollectionsViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Margin="12">
+        <HorizontalStackLayout Spacing="6">
+            <Entry x:Name="CollectionName" Text="{Binding NewCollectionName}"  Placeholder="Nazwa kolekcji" />
+            <Button Text="Dodaj kolekcję" Command="{Binding CreateCollectionCommand}" Background="#46b840" TextColor="#fff"/>
+        </HorizontalStackLayout>
+
+        <ListView x:Name="listView" ItemsSource="{Binding CollectionsNames}" ItemSelected="OnItemSelectedChanged" Margin="0,12,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding .}" FontSize="28" Padding="18" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsSystem.Views.ItemFormView"
+             Title="Formularz przedmiotu">
+    <VerticalStackLayout Margin="12" WidthRequest="400">
+        <VerticalStackLayout Spacing="12">
+            <VerticalStackLayout>
+                <Label Text="Nazwa"/>
+                <Entry x:Name="name"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Status"/>
+                <Picker ItemsSource="{Binding StatusOptions}" x:Name="status"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Ocena"/>
+                <Picker x:Name="rating">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                            <x:String>6</x:String>
+                            <x:String>7</x:String>
+                            <x:String>8</x:String>
+                            <x:String>9</x:String>
+                            <x:String>10</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <Button Clicked="SaveItem_Clicked" Text="Zapisz przedmiot" Margin="0,12,0,0" Background="#46b840" TextColor="#fff"/>
+    </VerticalStackLayout>
+</ContentPage>

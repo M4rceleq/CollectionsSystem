@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionsSystem.Views.CollectionDetailsView"
+             xmlns:ViewModels="clr-namespace:CollectionsSystem.ViewModels"
+             Title="{Binding CollectionName, StringFormat='Kolekcja &quot;{0}&quot;'}">
+    <ContentPage.BindingContext>
+        <ViewModels:CollectionDetailsViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style x:Key="border" TargetType="Border">
+            <Setter Property="Stroke" Value="#444" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Margin" Value="-1" />
+        </Style>
+        <Style x:Key="sold" TargetType="Border" BasedOn="{StaticResource border}">
+            <Setter Property="Opacity" Value="0.2"/>
+        </Style>
+        <Style x:Key="cell" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="12" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style x:Key="header" TargetType="Label" BasedOn="{StaticResource cell}">
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Spacing="6" Margin="12">
+            <HorizontalStackLayout Spacing="6">
+                <Button Text="Dodaj przedmiot" Command="{Binding AddItemCommand}" Background="#46b840" TextColor="#fff"/>
+                <Button Text="Zmień nazwę kolekcji" Clicked="ChangeCollectionName_Clicked" Background="#c98634" TextColor="#fff"/>
+                <Button Text="Usuń kolekcję" Command="{Binding DeleteCollectionCommand}" Background="#b82a2a" TextColor="#fff"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,12,0,0">
+                <Border Stroke="#444" StrokeThickness="1" x:Name="collection"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
